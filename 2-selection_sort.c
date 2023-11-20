@@ -2,8 +2,8 @@
 
 /**
  * selection_sort - sorts an array of (int), Selection sort
- * @array - the array to be sorted
- * @size - the size of the array
+ * @array: the array to be sorted
+ * @size: the size of the array
  */
 void selection_sort(int *array, size_t size)
 {
