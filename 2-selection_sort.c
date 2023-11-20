@@ -10,6 +10,9 @@ void selection_sort(int *array, size_t size)
 	int temp, min_pos = 0;
 	size_t a, b;
 
+	if (array == NULL || size < 2)
+		return;
+
 	/*Does not sort an array with <2 elements*/
 	for (a = 0; a < size - 1; a++)
 	{
