@@ -1,5 +1,5 @@
 # sorting_algorithms
-ALX project on sorting algorithms and the Big-Oh notation.
+ALX project on sorting algorithms and the Big-O notation.
 
 ## What I learnt
 - At least four different sorting algorithms
