@@ -33,7 +33,7 @@ void nodes_switch(listint_t **head, listint_t **big, listint_t *small)
  */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *ptr, *insert;
+	listint_t *ptr, *insert;
 	listint_t *node; /*Keeps track of the current node*/
 
     /*List is empty*/
