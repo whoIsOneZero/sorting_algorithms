@@ -2,7 +2,7 @@
 
 void _swap(int *num1, int *num2);
 void recursion_quick_sort(int array[], int from, int to, size_t size);
-int divide(int array[], int from, int to, size_t size);
+int divide(int *array, int from, int to, size_t size);
 
 /**
  * _swap - changes the position of the elements provided.
@@ -27,6 +27,9 @@ void quick_sort(int *array, size_t size)
 {
 	int length = size;
 
+	if (array == NULL || size < 2)
+		return;
+
 	/*Initially works on the entire array*/
 	recursion_quick_sort(array, 0, length - 1, size);
 }
@@ -36,6 +39,7 @@ void quick_sort(int *array, size_t size)
  * @array: the array to be sorted.
  * @from: where to start the partitioning from
  * @to: where to end the partitioning at
+ * B
  * @size: the array size.
  */
 void recursion_quick_sort(int array[], int from, int to, size_t size)
@@ -51,7 +55,7 @@ void recursion_quick_sort(int array[], int from, int to, size_t size)
 }
 
 /**
- * divide - divides the array into small chunks for sorting.
+ * divide - divides the array into small chunks for sorting (lamuto)
  * @array: the array to sort.
  * @from: where to start diving the array.
  * @to: where to stop dividing the array.
@@ -59,26 +63,31 @@ void recursion_quick_sort(int array[], int from, int to, size_t size)
  *
  * Return: the index of the new pivot position
  */
-int divide(int array[], int from, int to, size_t size)
+int divide(int *array, int from, int to, size_t size)
 {
-	int pivot_value = array[to]; /*Pivot will always be last element*/
-	int i = from;
-	int j, new_pivot_index;
+	int *pivot_value = array + to; /*Pivot will always be last element*/
+	int top, bottom, new_pivot_index;
 
-	for (j = from; j < to; j++)
+	for (top = bottom = from; bottom < to; bottom++)
 	{
-		if (array[j] <= pivot_value)
+		if (array[bottom] < *pivot_value)
 		{
-			_swap(&array[i], &array[j]);
-			i++;
+			if (top < bottom)
+			{
+				_swap(array + bottom, array + top);
+				print_array(array, size); /*Show swap*/
+			}
+			top++; /*Next element*/
 		}
 	}
 
-	_swap(&array[i], &array[to]);
+	if (array[top] > *pivot_value)
+	{
+		_swap(array + top, pivot_value);
+		print_array(array, size); /*Show swap*/
+	}
 
-	print_array(array, size);
-
-	new_pivot_index = i;
+	new_pivot_index = top;
 
 	return (new_pivot_index);
 }
